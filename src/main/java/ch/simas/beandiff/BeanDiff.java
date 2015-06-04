@@ -62,7 +62,6 @@ public class BeanDiff {
                 }
             }
         } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException ex) {
-            ex.printStackTrace();
         }
     }
 
@@ -76,6 +75,10 @@ public class BeanDiff {
 
     public Difference getDifference(String path) {
         return differences.get(path);
+    }
+
+    public boolean hasDifferences() {
+        return !differences.isEmpty();
     }
 
 }

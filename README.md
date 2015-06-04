@@ -17,6 +17,8 @@ The objects don't need to have the same type. BeanDiff looks for matching field 
   assertTrue(diff.getDifferences().isEmpty());
 ```
 
+The BeanDiff object contains a map of type Difference and Difference contains the path to the property and the compared values.
+
 ##License
 BeanDiff is Open Source under Apache License Version 2
 http://www.apache.org/licenses/LICENSE-2.0

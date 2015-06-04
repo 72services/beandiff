@@ -30,7 +30,7 @@ public class BeanDiffTest {
         BeanDiff diff = new BeanDiff();
         diff.diff(a, b);
 
-        assertTrue(diff.getDifferences().isEmpty());
+        assertFalse(diff.hasDifferences());
     }
 
     @Test
@@ -54,7 +54,7 @@ public class BeanDiffTest {
         BeanDiff diff = new BeanDiff();
         diff.diff(a, b);
 
-        assertFalse(diff.getDifferences().isEmpty());
+        assertTrue(diff.hasDifferences());
 
         diff.getDifferences().stream().forEach(System.out::println);
     }
@@ -79,7 +79,7 @@ public class BeanDiffTest {
         BeanDiff diff = new BeanDiff();
         diff.diff(a, b);
 
-        assertFalse(diff.getDifferences().isEmpty());
+        assertTrue(diff.hasDifferences());
 
         diff.getDifferences().stream().forEach(System.out::println);
     }
@@ -100,7 +100,7 @@ public class BeanDiffTest {
         BeanDiff diff = new BeanDiff();
         diff.diff(a, b);
 
-        assertFalse(diff.getDifferences().isEmpty());
+        assertTrue(diff.hasDifferences());
 
         diff.getDifferences().stream().forEach(System.out::println);
     }
@@ -117,7 +117,7 @@ public class BeanDiffTest {
         BeanDiff diff = new BeanDiff();
         diff.diff(a, b);
 
-        assertFalse(diff.getDifferences().isEmpty());
+        assertTrue(diff.hasDifferences());
 
         diff.getDifferences().stream().forEach(System.out::println);
     }
@@ -129,7 +129,7 @@ public class BeanDiffTest {
         BeanDiff diff = new BeanDiff();
         diff.diff(null, null);
 
-        assertTrue(diff.getDifferences().isEmpty());
+        assertFalse(diff.hasDifferences());
 
         diff.getDifferences().stream().forEach(System.out::println);
     }
