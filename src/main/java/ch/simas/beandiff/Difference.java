@@ -3,30 +3,38 @@ package ch.simas.beandiff;
 public class Difference {
 
     private final String path;
-    private final String leftValue;
-    private final String rightValue;
+    private final Object left;
+    private final Object right;
 
-    public Difference(String path, String leftValue, String rightValue) {
+    public Difference(String path, Object left, Object right) {
         this.path = path;
-        this.leftValue = leftValue;
-        this.rightValue = rightValue;
+        this.left = left;
+        this.right = right;
     }
 
     public String getPath() {
         return path;
     }
 
-    public String getLeftValue() {
-        return leftValue;
+    public Object getLeft() {
+        return left;
     }
 
-    public String getRightValue() {
-        return rightValue;
+    public Object getRight() {
+        return right;
+    }
+
+    public String getLeftAsString() {
+        return ToStringBuilder.createToString(left);
+    }
+
+    private String getRightAsString() {
+        return ToStringBuilder.createToString(right);
     }
 
     @Override
     public String toString() {
-        return "Difference {" + "path=" + path + ", leftValue=" + leftValue + ", rightValue=" + rightValue + '}';
+        return "Difference{" + "path=" + path + ", left=" + getLeftAsString() + ", right=" + getRightAsString() + '}';
     }
 
 }
