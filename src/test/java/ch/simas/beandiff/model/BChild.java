@@ -1,4 +1,4 @@
-package ch.simas.beandiff;
+package ch.simas.beandiff.model;
 
 public class BChild extends IdEntity {
 

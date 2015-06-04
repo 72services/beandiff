@@ -12,25 +12,42 @@ public class BeanDiff {
 
     public void diff(String path, Object o1, Object o2) {
         try {
-            Field[] fields = o1.getClass().getDeclaredFields();
+            if (o1 == null) {
+                if (o2 != null) {
+                    differences.add(new Difference(path, "", o2.toString()));
+                }
+            } else {
+                Field[] fields = o1.getClass().getDeclaredFields();
 
-            for (Field field1 : fields) {
-                field1.setAccessible(true);
-                Object value1 = field1.get(o1);
+                for (Field field1 : fields) {
+                    field1.setAccessible(true);
+                    Object value1 = field1.get(o1);
+                    if (o2 == null) {
+                        differences.add(new Difference(path + "/" + field1.getName(), value1.toString(), ""));
+                    } else {
+                        Field f2 = o2.getClass().getDeclaredField(field1.getName());
+                        f2.setAccessible(true);
+                        Object value2 = f2.get(o2);
 
-                Field f2 = o2.getClass().getDeclaredField(field1.getName());
-                f2.setAccessible(true);
-                Object value2 = f2.get(o2);
+                        if (value1 instanceof Collection) {
+                            Collection col1 = (Collection) value1;
+                            Collection col2 = (Collection) value2;
+                            if (col2 != null && col1.size() == col2.size()) {
+                                for (int i = 0; i < col1.size(); i++) {
+                                    diff(path + "/" + field1.getName() + "/" + i, col1.iterator().next(), col2.iterator().next());
+                                }
+                            } else {
+                                differences.add(new Difference(path + "/" + field1.getName(), col1.toString(), col2 == null ? "" : col2.toString()));
+                            }
 
-                if (value1 instanceof Collection) {
-                    Collection col1 = (Collection) value1;
-                    Collection col2 = (Collection) value2;
-                } else if (value1 instanceof String || value1 instanceof Integer|| value1 instanceof BigDecimal || value1 instanceof Long) {
-                    if (!value1.equals(value2)) {
-                        differences.add(new Difference(path + "/" + field1.getName(), value1.toString(), value2.toString()));
+                        } else if (value1 instanceof String || value1 instanceof Integer || value1 instanceof BigDecimal || value1 instanceof Long) {
+                            if (!value1.equals(value2)) {
+                                differences.add(new Difference(path + "/" + field1.getName(), value1.toString(), value2 == null ? "" : value2.toString()));
+                            }
+                        } else {
+                            diff(field1.getName(), value1, value2);
+                        }
                     }
-                } else {
-                    diff(field1.getName(), value1, value2);
                 }
             }
         } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException ex) {

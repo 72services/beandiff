@@ -1,9 +1,14 @@
-package ch.simas.beandiff;
+package ch.simas.beandiff.model;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class A extends IdEntity {
 
     private String name;
     private AChild child;
+
+    private List<AChild> childs = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -19,6 +24,14 @@ public class A extends IdEntity {
 
     public void setChild(AChild child) {
         this.child = child;
+    }
+
+    public List<AChild> getChilds() {
+        return childs;
+    }
+
+    public void setChilds(List<AChild> childs) {
+        this.childs = childs;
     }
 
 }
