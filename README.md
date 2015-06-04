@@ -19,6 +19,11 @@ The objects don't need to have the same type. BeanDiff looks for matching field 
 
 The BeanDiff object contains a map of type Difference and Difference contains the path to the property and the compared values.
 
+###Example ouput of a Difference
+Difference{path=/name, left=Hallo, right=Welt}
+
+BeanDiff is also using reflection for the string representation of the diff values.
+
 ##License
 BeanDiff is Open Source under Apache License Version 2
 http://www.apache.org/licenses/LICENSE-2.0
