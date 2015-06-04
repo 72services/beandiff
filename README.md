@@ -6,10 +6,10 @@ The objects don't need to have the same type. BeanDiff looks for matching field 
 ##Usage
 ```java
   A a = new A();
-  a.setName("Name");
+  a.setName("Hello");
 
   B b = new B();
-  b.setName("Name");
+  b.setName("World");
 
   BeanDiff diff = new BeanDiff();
   diff.diff(a, b);
@@ -21,7 +21,7 @@ The BeanDiff object contains a map of type Difference and Difference contains th
 
 ###Example ouput of a Difference
 ```
-Difference{path=/name, left=Hallo, right=Welt}
+Difference{path=/name, left=Hello, right=World}
 ```
 
 BeanDiff is also using reflection for the string representation of the diff values.
