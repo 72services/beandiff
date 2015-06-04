@@ -3,7 +3,7 @@ package ch.simas.beandiff.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class B extends IdEntity {
+public class B {
 
     private String name;
     private BChild child;

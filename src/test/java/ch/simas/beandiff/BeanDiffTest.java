@@ -11,7 +11,7 @@ public class BeanDiffTest {
 
     @Test
     public void noDiff() {
-        System.out.println("noDiff");
+        System.out.println("\n--> noDiff");
 
         A a = new A();
         a.setName("Name");
@@ -35,7 +35,7 @@ public class BeanDiffTest {
 
     @Test
     public void valuesDiff() {
-        System.out.println("valuesDiff");
+        System.out.println("\n--> valuesDiff");
 
         A a = new A();
         a.setName("Hallo");
@@ -63,7 +63,7 @@ public class BeanDiffTest {
 
     @Test
     public void diffCollection() {
-        System.out.println("diffCollection");
+        System.out.println("\n--> diffCollection");
 
         A a = new A();
         a.setName("Hallo");
@@ -90,7 +90,7 @@ public class BeanDiffTest {
 
     @Test
     public void diffObject() {
-        System.out.println("diffObject");
+        System.out.println("\n--> diffObject");
 
         A a = new A();
         a.setName("Hallo");
@@ -113,7 +113,7 @@ public class BeanDiffTest {
 
     @Test
     public void firstValueNull() {
-        System.out.println("firstValueNull");
+        System.out.println("\n--> firstValueNull");
 
         A a = new A();
 
@@ -132,7 +132,7 @@ public class BeanDiffTest {
 
     @Test
     public void bothValuesNull() {
-        System.out.println("bothValuesNull");
+        System.out.println("\n--> bothValuesNull");
 
         BeanDiff diff = new BeanDiff();
         diff.diff("", null, null);

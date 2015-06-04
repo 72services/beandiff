@@ -1,6 +1,6 @@
 package ch.simas.beandiff.model;
 
-public class AChild extends IdEntity {
+public class AChild {
 
     private String name;
 

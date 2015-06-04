@@ -1,7 +1,6 @@
 package ch.simas.beandiff;
 
 import java.lang.reflect.Field;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -29,7 +28,12 @@ public class BeanDiff {
                         f2.setAccessible(true);
                         Object value2 = f2.get(o2);
 
-                        if (value1 instanceof Collection) {
+                        if (value1 == null) {
+                            if (value2 != null) {
+                                differences.add(new Difference(path, "", value2.toString()));
+                            }
+                        }
+                        else if (value1 instanceof Collection) {
                             Collection col1 = (Collection) value1;
                             Collection col2 = (Collection) value2;
                             if (col2 != null && col1.size() == col2.size()) {
@@ -40,7 +44,7 @@ public class BeanDiff {
                                 differences.add(new Difference(path + "/" + field1.getName(), col1.toString(), col2 == null ? "" : col2.toString()));
                             }
 
-                        } else if (value1 instanceof String || value1 instanceof Integer || value1 instanceof BigDecimal || value1 instanceof Long) {
+                        } else if (isPrimitiveOrStringOrWrapperOrBigDecimal(value1.getClass())) {
                             if (!value1.equals(value2)) {
                                 differences.add(new Difference(path + "/" + field1.getName(), value1.toString(), value2 == null ? "" : value2.toString()));
                             }
@@ -53,6 +57,10 @@ public class BeanDiff {
         } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException ex) {
             ex.printStackTrace();
         }
+    }
+
+    private boolean isPrimitiveOrStringOrWrapperOrBigDecimal(Class clazz) {
+        return clazz.isPrimitive() || String.class == clazz || Character.class == clazz || Boolean.class == clazz || clazz.isAssignableFrom(Number.class);
     }
 
     public List<Difference> getDifferences() {
@@ -89,4 +97,5 @@ public class BeanDiff {
         }
 
     }
+
 }
