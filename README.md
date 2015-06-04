@@ -14,7 +14,7 @@ The objects don't need to have the same type. BeanDiff looks for matching field 
   BeanDiff diff = new BeanDiff();
   diff.diff(a, b);
 
-  assertTrue(diff.getDifferences().isEmpty());
+  assertTrue(diff.hasDifferences());
 ```
 
 The BeanDiff object contains a map of type Difference and Difference contains the path to the property and the compared values.
