@@ -1,5 +1,5 @@
 # BeanDiff
-BeanDiff is a simple library to compare to objects using reflection. 
+BeanDiff is a simple library to compare two objects using reflection. 
 
 The objects don't need to have the same type. BeanDiff looks for matching field names and compares the values.
 
