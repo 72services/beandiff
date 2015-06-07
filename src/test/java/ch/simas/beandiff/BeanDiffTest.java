@@ -56,7 +56,7 @@ public class BeanDiffTest {
 
         assertTrue(diff.hasDifferences());
 
-        diff.getDifferences().stream().forEach(System.out::println);
+        printDifferences(diff);
     }
 
     @Test
@@ -81,7 +81,7 @@ public class BeanDiffTest {
 
         assertTrue(diff.hasDifferences());
 
-        diff.getDifferences().stream().forEach(System.out::println);
+        printDifferences(diff);
     }
 
     @Test
@@ -102,7 +102,7 @@ public class BeanDiffTest {
 
         assertTrue(diff.hasDifferences());
 
-        diff.getDifferences().stream().forEach(System.out::println);
+        printDifferences(diff);
     }
 
     @Test
@@ -119,7 +119,7 @@ public class BeanDiffTest {
 
         assertTrue(diff.hasDifferences());
 
-        diff.getDifferences().stream().forEach(System.out::println);
+        printDifferences(diff);
     }
 
     @Test
@@ -131,6 +131,12 @@ public class BeanDiffTest {
 
         assertFalse(diff.hasDifferences());
 
-        diff.getDifferences().stream().forEach(System.out::println);
+        printDifferences(diff);
+    }
+
+    private void printDifferences(BeanDiff diff) {
+        for (Difference difference : diff.getDifferences()) {
+            System.out.println(difference);
+        }
     }
 }
