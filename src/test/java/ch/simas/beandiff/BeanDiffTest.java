@@ -1,9 +1,9 @@
 package ch.simas.beandiff;
 
-import ch.simas.beandiff.model.B;
-import ch.simas.beandiff.model.AChild;
-import ch.simas.beandiff.model.BChild;
 import ch.simas.beandiff.model.A;
+import ch.simas.beandiff.model.AChild;
+import ch.simas.beandiff.model.B;
+import ch.simas.beandiff.model.BChild;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -56,7 +56,9 @@ public class BeanDiffTest {
 
         assertTrue(diff.hasDifferences());
 
-        printDifferences(diff);
+        for (Difference difference : diff.getDifferences()) {
+            System.out.println(difference);
+        }
     }
 
     @Test
@@ -81,7 +83,9 @@ public class BeanDiffTest {
 
         assertTrue(diff.hasDifferences());
 
-        printDifferences(diff);
+        for (Difference difference : diff.getDifferences()) {
+            System.out.println(difference);
+        }
     }
 
     @Test
@@ -102,7 +106,9 @@ public class BeanDiffTest {
 
         assertTrue(diff.hasDifferences());
 
-        printDifferences(diff);
+        for (Difference difference : diff.getDifferences()) {
+            System.out.println(difference);
+        }
     }
 
     @Test
@@ -119,7 +125,9 @@ public class BeanDiffTest {
 
         assertTrue(diff.hasDifferences());
 
-        printDifferences(diff);
+        for (Difference difference : diff.getDifferences()) {
+            System.out.println(difference);
+        }
     }
 
     @Test
@@ -131,10 +139,6 @@ public class BeanDiffTest {
 
         assertFalse(diff.hasDifferences());
 
-        printDifferences(diff);
-    }
-
-    private void printDifferences(BeanDiff diff) {
         for (Difference difference : diff.getDifferences()) {
             System.out.println(difference);
         }

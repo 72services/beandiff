@@ -8,7 +8,7 @@ public class A {
     private String name;
     private AChild child;
 
-    private List<AChild> childs = new ArrayList<>();
+    private List<AChild> childs = new ArrayList<AChild>();
 
     public String getName() {
         return name;
